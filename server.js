@@ -6,16 +6,16 @@ require('dotenv').config();
 const mongoose = require("mongoose");
 const server = express();
 server.use(cors());
-
-const MONGO_SERVER = process.env.MONGO_SERVER
-mongoose.connect(`${MONGO_SERVER}`);
+mongoose.connect(`mongodb://localhost:27017/book`);
 const PORT = process.env.PORT;
 const { getBookHandler} = require("./Modules/bookHandler");
 
 //Routes
 server.get('/',homeHandler);
-server.get('/getBook',getBookHandler);
+//http://localhost:3001/book
+server.get('/book',getBookHandler);
 server.get('*',everythingElseHandler);
+
 
 function everythingElseHandler(req,res){
     res.status(404).send('NOT FOUND LOL ): ');

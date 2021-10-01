@@ -43,7 +43,7 @@ let seedBook = () => {
     }
     return MYBooks;
 }
-
+seedBook();
 module.exports = {
     seedBook,
     bookModel

@@ -12,7 +12,7 @@ const { getBookHandler} = require("./Modules/bookHandler");
 
 //Routes
 server.get('/',homeHandler);
-//http://localhost:3001/book
+//http://localhost:3001/book?email=
 server.get('/book',getBookHandler);
 server.get('*',everythingElseHandler);
 

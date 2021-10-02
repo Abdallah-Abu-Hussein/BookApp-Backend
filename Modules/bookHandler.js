@@ -1,5 +1,5 @@
 'use strict';
-const {bookModel} = require('./book');
+import { bookModel } from './book';
 
 
 
@@ -17,6 +17,6 @@ res.send(data);
 }
 })
 }
-module.exports={
+export default{
     getBookHandler,
 }

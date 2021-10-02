@@ -4,18 +4,22 @@ const express = require('express');
 const cors =require('cors');
 require('dotenv').config();
 const mongoose = require("mongoose");
+
 const server = express();
 server.use(cors());
-mongoose.connect(`mongodb://localhost:27017/book`);
+server.use(express.json());
 const PORT = process.env.PORT;
-const { getBookHandler, createBookHandler} = require("./Modules/bookHandler");
+const MONGO_SERVER = process.env.MONGO_SERVER
+
+mongoose.connect(`${MONGO_SERVER}`);
+
+const { getBookHandler, createBookHandler,deleteBookHandler} = require("./Modules/bookHandler");
 
 // Routes
 server.get('/',homeHandler);
-//http://localhost:3001/books
-server.get('/books',getBookHandler);
+server.get('/getBook', getBookHandler);
 server.post('/createBook', createBookHandler);
-//server.delete('/deleteBook', deleteBookHandler);
+server.delete('/deleteBook', deleteBookHandler);
 server.get('*',everythingElseHandler);
 
 

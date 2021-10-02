@@ -44,12 +44,24 @@ let deleteBookHandler = (req, res) => {
         res.status(500).send('error there is no file');
     });
 }
+let UpdateBookHandler = (req, res) => {
 
+    let { title, author, description, status, id, email1 } = req.body;
 
+    bookModel.findByIdAndUpdate(id, { title, author, description, status }).then(() => {
+        bookModel.find({ email: email1 }).then(data => {
+            res.status(200).json(data);
+            console.log(data);
+        })
+    }).catch((error) => {
+        res.status(500).send('error there is no file');
 
+    });
+}
 
 module.exports = {
     getBookHandler,
     createBookHandler,
     deleteBookHandler,
+    UpdateBookHandler,
 }

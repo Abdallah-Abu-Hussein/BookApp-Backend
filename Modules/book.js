@@ -27,14 +27,14 @@ let seedBook = () => {
             author:'Rami',
             description: "CS",
             status: 'fun',
-            email: 'Abdallahu7654376543@gmail.com'
+            email: 'abdallh1133224466@gmail.com'
         }),
         new bookModel({
             title: "English",
             author:"zsh",
             description: "english",
             status: 'nice',
-            email: 'orange001@gmail.com'
+            email: 'abdallh1133224466@gmail.com'
         })
     ]
 
@@ -43,7 +43,7 @@ let seedBook = () => {
     }
     return MYBooks;
 }
-seedBook();
+//seedBook();
 module.exports = {
     seedBook,
     bookModel

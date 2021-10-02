@@ -1,14 +1,22 @@
 'use strict';
 const {bookModel} = require('./book');
 
-function getBookHandler(req,res){
-    bookModel.find().then(data =>{
-        res.json(data);
-    })
-    .catch((error) =>{
-        res.status(500).send('error NO data here to get :)')
-    });
-    }
+
+
+function getBookHandler(req, res) {
+let email = req.query.email;
+bookModel.find({ email }, function (error, data) {
+if (error) {
+
+console.log('Error no data here check next time ', error);
+}
+else {
+console.log(email);
+console.log(data);
+res.send(data);
+}
+})
+}
 module.exports={
     getBookHandler,
 }

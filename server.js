@@ -8,14 +8,14 @@ const server = express();
 server.use(cors());
 mongoose.connect(`mongodb://localhost:27017/book`);
 const PORT = process.env.PORT;
-const { getBookHandler, createBookHandler, deleteBookHandler} = require("./Modules/bookHandler");
+const { getBookHandler, createBookHandler} = require("./Modules/bookHandler");
 
 // Routes
 server.get('/',homeHandler);
 //http://localhost:3001/books
 server.get('/books',getBookHandler);
 server.post('/createBook', createBookHandler);
-server.delete('/deleteBook', deleteBookHandler);
+//server.delete('/deleteBook', deleteBookHandler);
 server.get('*',everythingElseHandler);
 
 

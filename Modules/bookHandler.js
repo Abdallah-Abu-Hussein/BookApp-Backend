@@ -1,7 +1,5 @@
 'use strict';
 const {bookModel} = require('./book');
-
-
 function getBookHandler(req, res) {
 let email = req.query.email;
 bookModel.find({ email }, function (error, data) {
@@ -26,10 +24,12 @@ let createBookHandler = async  (req, res) => {
       status: status1,
       email: email1
     })
-    bookModel.find({email:email1}).then(data => {
+    let email = req.query.email;
+    bookModel.find({email}).then(data => {
+        console.log(data);
         res.status(200).json(data);
     }).catch((error) => {
-        res.status(500).send('error there is no recived data');
+        res.status(500).send('error there is no received data');
     });
 }
 
@@ -38,10 +38,10 @@ let deleteBookHandler = (req, res) => {
 
     let id1 = req.query.bookID;
     console.log(id1);
-    let email1 = req.query.email;
-    console.log(email1);
+    let email = req.query.email;
+
     bookModel.findByIdAndDelete({_id:id1}).then(() => {
-        bookModel.find({email:email1}).then(data => {
+        bookModel.find({email}).then(data => {
             res.status(200).json(data);
         })
     }).catch((error) => {
